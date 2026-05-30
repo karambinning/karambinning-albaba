@@ -1,204 +1,536 @@
 <!doctype html>
 <html lang="en-GB">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Albaba · Lebanese kitchen on Kirkgate · Leeds LS2 7DR</title>
-  <meta name="description" content="Albaba — a Lebanese kitchen at 29 Kirkgate, Leeds. Falafel wraps, charcoal kebabs, hummus, lentil soup and Turkish coffee — open from 11am until late, seven days.">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Albaba · Lebanese kitchen · 29 Kirkgate, Leeds LS2 7DR</title>
+<meta name="description" content="A Lebanese kitchen on Kirkgate. Charcoal grills, mezze, shawarma and Turkish coffee — open until late, delivering across Leeds, Bradford and Wakefield.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400;9..144,700;9..144,900&family=Newsreader:opsz,ital,wght@6..72,0,400;6..72,0,600;6..72,1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2E9DD;
+  --paper-2:#E9DCC8;
+  --ink:#241410;
+  --ink-soft:#3B241B;
+  --clay:#D08760;
+  --terracotta:#8E3B22;
+  --ember:#C0431E;
+  --olive:#6C7544;
+  --rule:rgba(36,20,16,.18);
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Newsreader",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:clamp(1rem,.6rem + .65vw,1.18rem);
+  line-height:1.55;
+  font-feature-settings:"liga","kern","onum";
+  text-wrap:pretty;
+  hyphens:auto;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  pointer-events:none;
+  z-index:1;
+  opacity:.06;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.14 0 0 0 0 0.08 0 0 0 0 0.07 0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+h1,h2,h3{font-family:var(--display);font-weight:900;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h2{font-weight:700;font-size:clamp(1.6rem,1rem + 2vw,2.6rem);line-height:1}
+h3{font-weight:600;font-size:clamp(1.05rem,.8rem + .5vw,1.25rem);letter-spacing:.04em;text-transform:uppercase}
+a{color:inherit;text-decoration:none}
+em{font-style:italic;font-feature-settings:"ss01"}
+.eyebrow{font-family:var(--display);font-weight:600;font-style:italic;font-size:clamp(.85rem,.7rem + .25vw,1rem);letter-spacing:.02em;color:var(--terracotta)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem);position:relative;z-index:2}
+
+/* ── status bar ─────────────────────────────────── */
+.bar{
+  border-bottom:1px solid var(--rule);
+  background:var(--paper);
+  font-family:var(--display);
+  font-size:.82rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-weight:600;
+}
+.bar__inner{display:flex;gap:1.5rem;align-items:center;justify-content:space-between;padding:.7rem 0}
+.dot{display:inline-block;width:.55rem;height:.55rem;border-radius:999px;background:var(--olive);margin-right:.5rem;vertical-align:.05em;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.bar__right{display:none}
+@media (min-width:680px){.bar__right{display:block}}
+
+/* ── hero ───────────────────────────────────────── */
+.hero{position:relative;padding:clamp(2rem,5vw,4rem) 0 clamp(2rem,4vw,3rem);isolation:isolate;overflow:hidden}
+.hero__ember{
+  position:absolute;inset:auto -10vw -30vh -10vw;
+  height:90vh;
+  z-index:-1;
+  background:radial-gradient(ellipse at 50% 100%, var(--clay) 0%, rgba(208,135,96,0) 60%);
+  opacity:.55;
+  pointer-events:none;
+}
+@property --grad-angle{syntax:"<angle>";initial-value:0deg;inherits:false}
+.hero__halo{
+  position:absolute;
+  left:50%;top:58%;
+  width:min(120vw,1400px);aspect-ratio:1;
+  transform:translate(-50%,-50%);
+  z-index:-2;
+  opacity:.35;
+  background:conic-gradient(from var(--grad-angle),
+    var(--clay), var(--ember), var(--terracotta), var(--ink-soft), var(--clay));
+  filter:blur(60px);
+  animation:spin 28s linear infinite;
+  pointer-events:none;
+}
+@keyframes spin{to{--grad-angle:360deg}}
+.hero__grid{display:grid;grid-template-columns:1fr;gap:2rem;align-items:end}
+@media (min-width:900px){.hero__grid{grid-template-columns:1.4fr .8fr;gap:3rem}}
+.mast{font-family:var(--display);font-weight:900;font-size:clamp(5rem,18vw,15rem);line-height:.82;letter-spacing:-.045em;color:var(--ink);font-variation-settings:"opsz" 144,"SOFT" 25,"WONK" 1}
+.mast em{font-style:italic;color:var(--terracotta);font-variation-settings:"opsz" 144,"SOFT" 80,"WONK" 1}
+.mast .dot-end{color:var(--ember)}
+.hero__addr{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(1rem,.7rem + .6vw,1.2rem);color:var(--ink-soft);margin-top:1.25rem;max-width:34ch}
+.hero__meta{border-top:1px solid var(--rule);padding-top:1.25rem;display:flex;flex-direction:column;gap:1.1rem}
+.hero__lede{font-family:var(--body);font-size:clamp(1.05rem,.85rem + .4vw,1.22rem);line-height:1.5;color:var(--ink-soft);max-width:34ch}
+.hero__lede em{color:var(--terracotta);font-style:italic}
+.cta-row{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.25rem}
+.cta{
+  display:inline-flex;align-items:baseline;gap:.6rem;
+  font-family:var(--display);font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  font-size:.92rem;
+  padding:.85rem 1.2rem;
+  border:1px solid var(--ink);
+  background:var(--ink);
+  color:var(--paper);
+  transition:transform .25s ease,background .25s ease,color .25s ease;
+}
+.cta::after{content:"→";display:inline-block;transition:transform .25s ease}
+.cta:hover{background:var(--ember);border-color:var(--ember)}
+.cta:hover::after{transform:translateX(3px)}
+.cta--ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.cta--ghost:hover{background:var(--ink);color:var(--paper)}
+
+/* ── marquee strip ──────────────────────────────── */
+.strip{
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  background:var(--ink);color:var(--paper);
+  overflow:hidden;padding:1.1rem 0;
+  font-family:var(--display);font-weight:600;font-style:italic;
+  font-size:clamp(1.4rem,3vw,2.4rem);
+  letter-spacing:-.01em;
+}
+.strip__track{
+  display:inline-flex;gap:3.5rem;white-space:nowrap;
+  animation:scroll 45s linear infinite;
+  padding-left:3.5rem;
+}
+.strip__track span:nth-child(even){color:var(--clay)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.strip__sep{color:var(--terracotta);font-style:normal}
+
+/* ── slabs ──────────────────────────────────────── */
+.slab{padding:clamp(3rem,7vw,6rem) 0;position:relative}
+.slab--cream{background:var(--paper)}
+.slab--paper-2{background:var(--paper-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.slab--ink{background:var(--ink);color:var(--paper)}
+.slab--ink h2,.slab--ink h3{color:var(--paper)}
+.slab--ink .eyebrow{color:var(--clay)}
+.slab__head{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:clamp(1.8rem,3vw,2.6rem);align-items:end}
+@media (min-width:780px){.slab__head{grid-template-columns:auto 1fr auto;gap:2rem}}
+.slab__rule{display:none;height:1px;background:currentColor;opacity:.25}
+@media (min-width:780px){.slab__rule{display:block;align-self:center}}
+.section-no{font-family:var(--display);font-weight:600;font-style:italic;font-size:.95rem;letter-spacing:.06em}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr;gap:2.2rem}
+@media (min-width:900px){.about{grid-template-columns:.9fr 1.1fr;gap:4rem}}
+.about__lede{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,1rem + 1.4vw,2.2rem);line-height:1.18;letter-spacing:-.015em;color:var(--ink)}
+.about__lede em{color:var(--terracotta);font-style:italic}
+.about__body{font-size:1.05rem;line-height:1.65;color:var(--ink-soft);max-width:42ch}
+.about__body p + p{margin-top:1em}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.6rem}
+.tag{
+  display:inline-block;padding:.4rem .7rem;
+  font-family:var(--display);font-weight:600;font-size:.75rem;
+  letter-spacing:.16em;text-transform:uppercase;
+  border:1px solid var(--ink);color:var(--ink);
+  background:var(--paper);
+}
+.tag--olive{border-color:var(--olive);color:var(--olive)}
+.tag--clay{border-color:var(--terracotta);color:var(--terracotta)}
+
+/* menu — editorial broadsheet */
+.menu{display:grid;grid-template-columns:1fr;gap:clamp(2.4rem,4vw,3.6rem)}
+@media (min-width:880px){.menu{grid-template-columns:1fr 1fr;column-gap:clamp(3rem,6vw,5.5rem)}}
+.menu__section{break-inside:avoid}
+.menu__title{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(1.6rem,1rem + 1.5vw,2.2rem);
+  line-height:1;
+  color:var(--terracotta);
+  letter-spacing:-.01em;
+  margin:0 0 .25rem;
+  font-variation-settings:"opsz" 96,"SOFT" 25;
+}
+.menu__title em{font-style:italic;color:var(--ink)}
+.menu__hint{font-family:var(--display);font-style:italic;font-size:.92rem;color:var(--ink-soft);margin:0 0 1.2rem;display:block}
+.menu__list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.menu__list li{
+  display:grid;grid-template-columns:1fr auto;
+  align-items:baseline;
+  gap:.6rem;
+  padding:.85rem 0;
+  border-bottom:1px dotted var(--rule);
+  font-size:1.06rem;
+}
+.menu__item{font-family:var(--body);font-weight:400;color:var(--ink)}
+.menu__price{font-family:var(--display);font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink-soft);font-size:.98rem;letter-spacing:.02em}
+@supports (animation-timeline:view()){
+  .reveal{animation:rise both;animation-timeline:view();animation-range:entry 0% cover 22%}
+  @keyframes rise{from{opacity:0;transform:translateY(1.4rem)}to{opacity:1;transform:translateY(0)}}
+}
+
+/* hours + delivery letterhead */
+.letterhead{display:grid;grid-template-columns:1fr;gap:2rem}
+@media (min-width:880px){.letterhead{grid-template-columns:1.05fr .95fr 1fr;gap:3rem}}
+.lh__col h3{margin-bottom:1.2rem;color:var(--clay)}
+.lh__list{list-style:none;margin:0;padding:0;font-family:var(--body)}
+.lh__list li{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid rgba(242,233,221,.12);font-size:1rem}
+.lh__list li:last-child{border-bottom:0}
+.lh__day{color:rgba(242,233,221,.66)}
+.lh__time{font-variant-numeric:tabular-nums;color:var(--paper);font-feature-settings:"tnum"}
+.lh__postcodes{font-family:var(--display);font-style:italic;font-size:1.1rem;line-height:1.55;color:rgba(242,233,221,.8);column-count:2;column-gap:1.6rem}
+.lh__postcodes span{break-inside:avoid;display:block;padding:.18rem 0}
+
+/* footer / colophon */
+.colophon{padding:clamp(2.5rem,5vw,4rem) 0 clamp(2rem,4vw,3rem);background:var(--paper);border-top:1px solid var(--rule)}
+.colophon__grid{display:grid;grid-template-columns:1fr;gap:1.6rem}
+@media (min-width:800px){.colophon__grid{grid-template-columns:1.5fr 1fr 1fr;gap:2.4rem}}
+.colo__mark{font-family:var(--display);font-weight:900;font-style:italic;font-size:clamp(2.2rem,4vw,3.4rem);line-height:.95;letter-spacing:-.02em;color:var(--ink);font-variation-settings:"opsz" 96}
+.colo__mark em{color:var(--terracotta)}
+.colo__head{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;color:var(--terracotta);margin:0 0 .8rem}
+.colo__body{font-family:var(--body);font-size:1rem;line-height:1.55;color:var(--ink-soft);max-width:30ch}
+.colo__body a{border-bottom:1px solid var(--terracotta)}
+.colo__body a:hover{color:var(--ember);border-color:var(--ember)}
+.colo__credit{
+  margin-top:clamp(2rem,4vw,2.8rem);padding-top:1.2rem;border-top:1px solid var(--rule);
+  display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
+  font-family:var(--display);font-style:italic;font-size:.85rem;color:var(--ink-soft)
+}
+.flag{font-style:normal;font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:.7rem;color:var(--terracotta)}
+
+@media (prefers-reduced-motion:reduce){
+  .hero__halo,.strip__track,.dot{animation:none!important}
+  .reveal{animation:none!important;opacity:1!important;transform:none!important}
+}
+</style>
 </head>
 <body>
 
-<nav class="nav" aria-label="Primary">
-  <a href="index.html" class="nav__brand">Albaba</a>
-  <ul class="nav__links">
-    <li><a href="index.html" aria-current="page">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="services.html">Menu</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-  <a href="tel:+441133451414" class="nav__call">0113 345 1414</a>
-</nav>
+<!-- ── status bar ─────────────────────────────── -->
+<div class="bar">
+  <div class="wrap bar__inner">
+    <span><span class="dot" id="dot"></span><span id="status">Open until late</span></span>
+    <span class="bar__right" id="todayLine">Lebanese kitchen · Halal · Veggie · Vegan</span>
+  </div>
+</div>
 
+<!-- ── hero ───────────────────────────────────── -->
 <header class="hero">
-  <div class="hero__grid">
+  <div class="hero__ember"></div>
+  <div class="hero__halo" aria-hidden="true"></div>
+  <div class="wrap hero__grid">
     <div>
-      <p class="hero__eyebrow">29 Kirkgate · Leeds LS2 7DR · Lebanese kitchen</p>
-      <h1 class="hero__title">
-        <em>Al</em>baba.
-      </h1>
+      <p class="eyebrow">№ 29 Kirkgate · Leeds LS2 7DR · Est. on a slow stretch east of the markets</p>
+      <h1 class="mast">Al<em>baba</em><span class="dot-end">.</span></h1>
+      <p class="hero__addr">A Lebanese kitchen — mezze, charcoal grills, shawarma, and Turkish coffee at half past one in the morning.</p>
     </div>
     <aside class="hero__meta">
-      <p>An unassuming Lebanese kitchen at the rough end of Kirkgate. Falafel wraps to the lunchtime queue, mixed grills at dinner, hummus and Turkish coffee at half past one in the morning. Halal. Veggie. Open late, seven nights.</p>
-      <a href="tel:+441133451414" class="hero__phone">Call · 0113 345 1414</a>
+      <p class="hero__lede">Hummus and lentil soup at lunch. Mixed grills and lamb shawarma after dark. <em>Falafel wraps</em> at 1am to anyone still walking down Kirkgate. Open seven days, delivering as far as Wakefield.</p>
+      <div class="cta-row">
+        <a class="cta" href="https://albaba-restaurant.co.uk/" target="_blank" rel="noopener">Order online</a>
+        <a class="cta cta--ghost" href="https://maps.google.com/?q=Albaba+29+Kirkgate+Leeds+LS2+7DR" target="_blank" rel="noopener">Find us</a>
+      </div>
     </aside>
   </div>
 </header>
 
-<div class="marquee" aria-hidden="true">
-  <div class="marquee__track">
-    <span>Hummus</span>
-    <span>Tabbouleh</span>
-    <span>Falafel</span>
-    <span>Kibbeh</span>
-    <span>Shish Tawouk</span>
-    <span>Fattoush</span>
-    <span>Lentil Soup</span>
-    <span>Baba Ghanoush</span>
-    <span>Manakish</span>
-    <span>Mixed Grill</span>
-    <span>Turkish Coffee</span>
-    <span>Baklava</span>
-    <span>Hummus</span>
-    <span>Tabbouleh</span>
-    <span>Falafel</span>
-    <span>Kibbeh</span>
-    <span>Shish Tawouk</span>
-    <span>Fattoush</span>
-    <span>Lentil Soup</span>
-    <span>Baba Ghanoush</span>
-    <span>Manakish</span>
-    <span>Mixed Grill</span>
-    <span>Turkish Coffee</span>
-    <span>Baklava</span>
+<!-- ── marquee strip ──────────────────────────── -->
+<div class="strip" aria-hidden="true">
+  <div class="strip__track">
+    <span>Hummus</span><span class="strip__sep">·</span>
+    <span>Baba Ghanouj</span><span class="strip__sep">·</span>
+    <span>Moutabal</span><span class="strip__sep">·</span>
+    <span>Tabbouleh</span><span class="strip__sep">·</span>
+    <span>Fattoush</span><span class="strip__sep">·</span>
+    <span>Falafel</span><span class="strip__sep">·</span>
+    <span>Kibeh</span><span class="strip__sep">·</span>
+    <span>Halloumi</span><span class="strip__sep">·</span>
+    <span>Lamb Shawarma</span><span class="strip__sep">·</span>
+    <span>Shish Taouk</span><span class="strip__sep">·</span>
+    <span>Mixed Grill</span><span class="strip__sep">·</span>
+    <span>Arayes Kofta</span><span class="strip__sep">·</span>
+    <span>Stuffed Vine Leaves</span><span class="strip__sep">·</span>
+    <span>Muhamara</span><span class="strip__sep">·</span>
+    <span>Turkish Coffee</span><span class="strip__sep">·</span>
+    <!-- duplicate -->
+    <span>Hummus</span><span class="strip__sep">·</span>
+    <span>Baba Ghanouj</span><span class="strip__sep">·</span>
+    <span>Moutabal</span><span class="strip__sep">·</span>
+    <span>Tabbouleh</span><span class="strip__sep">·</span>
+    <span>Fattoush</span><span class="strip__sep">·</span>
+    <span>Falafel</span><span class="strip__sep">·</span>
+    <span>Kibeh</span><span class="strip__sep">·</span>
+    <span>Halloumi</span><span class="strip__sep">·</span>
+    <span>Lamb Shawarma</span><span class="strip__sep">·</span>
+    <span>Shish Taouk</span><span class="strip__sep">·</span>
+    <span>Mixed Grill</span><span class="strip__sep">·</span>
+    <span>Arayes Kofta</span><span class="strip__sep">·</span>
+    <span>Stuffed Vine Leaves</span><span class="strip__sep">·</span>
+    <span>Muhamara</span><span class="strip__sep">·</span>
+    <span>Turkish Coffee</span><span class="strip__sep">·</span>
   </div>
 </div>
 
+<!-- ── about ──────────────────────────────────── -->
 <section class="slab slab--cream">
-  <div class="slab__inner split">
-    <div class="reveal">
-      <p class="slab__eyebrow">The kitchen</p>
-      <h2 class="slab__title">A Levantine pantry on a Leeds <em>side-street</em>.</h2>
+  <div class="wrap">
+    <div class="slab__head reveal">
+      <span class="section-no">i.</span>
+      <p class="eyebrow">The kitchen</p>
+      <span class="slab__rule"></span>
     </div>
-    <div class="reveal">
-      <p>Albaba is a small, family-run Lebanese restaurant on the slow stretch of Kirkgate between the markets and Quarry Hill. The kitchen runs charcoal grills for the kebabs and the shish tawouk, deep-fries falafel to order, and turns out the same tabbouleh, hummus and labneh you'd find on a table in Beirut — without fuss, without theatre, without trying to be anything other than what it is.</p>
-      <p>Almost everything on the menu can be made vegetarian or vegan. All meat is halal. Dine in at one of the tables on the ground floor, take it away in a foil tray, or have it delivered as far as the ring road. Whatever you do, order the dip — and the Turkish coffee at the end.</p>
-      <span class="tag">Halal</span>
-      <span class="tag">Veggie</span>
-      <span class="tag">Vegan options</span>
-      <span class="tag">Takeaway</span>
+    <div class="about">
+      <p class="about__lede reveal">Lebanese food at the rough end of Kirkgate — <em>without theatre, without fuss.</em></p>
+      <div class="about__body reveal">
+        <p>Charcoal grills for the shish taouk and lamb. Falafel and kibeh fried to order. The same hummus, tabbouleh and moutabal you'd find on a table in Beirut, set down in foil trays or on plates between the few seats by the window.</p>
+        <p>Halal, generous, late. Most of the menu can be made vegetarian or vegan. Dine in, take it away, or have it delivered as far as the M62. Whatever you do, order the dip — and the Turkish coffee at the end.</p>
+        <div class="tags">
+          <span class="tag">Halal</span>
+          <span class="tag tag--olive">Veggie</span>
+          <span class="tag tag--olive">Vegan options</span>
+          <span class="tag tag--clay">Takeaway</span>
+          <span class="tag tag--clay">Late delivery</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="slab slab--clay">
-  <div class="slab__inner">
-    <p class="slab__eyebrow">What the regulars order</p>
-    <h2 class="slab__title">Six dishes worth a <em>walk down Kirkgate</em>.</h2>
-    <ol class="dishes">
-      <li class="dish reveal">
-        <span class="dish__num">01</span>
-        <div>
-          <h3 class="dish__name">Falafel Wrap</h3>
-          <p class="dish__desc">Chickpea-and-herb croquettes fried to order, rolled into warm flatbread with tahini, pickle and parsley. The single most-ordered thing in the kitchen.</p>
-        </div>
-      </li>
-      <li class="dish reveal">
-        <span class="dish__num">02</span>
-        <div>
-          <h3 class="dish__name">Shish Tawouk</h3>
-          <p class="dish__desc">Chicken thigh marinated in garlic, lemon and yoghurt, skewered and finished over the charcoal grill until it's crisp at the edges and slipping off the skewer.</p>
-        </div>
-      </li>
-      <li class="dish reveal">
-        <span class="dish__num">03</span>
-        <div>
-          <h3 class="dish__name">Hummus &amp; Bread</h3>
-          <p class="dish__desc">Chickpea purée with sesame paste, lemon and a slick of olive oil. Comes with a stack of warm bread for tearing. Worth bringing friends for.</p>
-        </div>
-      </li>
-      <li class="dish reveal">
-        <span class="dish__num">04</span>
-        <div>
-          <h3 class="dish__name">Lentil Soup</h3>
-          <p class="dish__desc">Red-lentil soup with cumin, lemon and a swirl of olive oil — what the office workers from the city centre come in for in winter.</p>
-        </div>
-      </li>
-      <li class="dish reveal">
-        <span class="dish__num">05</span>
-        <div>
-          <h3 class="dish__name">Mixed Grill</h3>
-          <p class="dish__desc">Shish, kofta and shish tawouk on one platter, served with rice, salad, pickled chilli and a dish of garlic sauce. Enough for two if you don't mind sharing.</p>
-        </div>
-      </li>
-      <li class="dish reveal">
-        <span class="dish__num">06</span>
-        <div>
-          <h3 class="dish__name">Turkish Coffee</h3>
-          <p class="dish__desc">Brewed slow in a long-handled pot, served thick, dark and unfiltered. The way to end the meal at one in the morning.</p>
-        </div>
-      </li>
-    </ol>
+<!-- ── menu ───────────────────────────────────── -->
+<section class="slab slab--paper-2" id="menu">
+  <div class="wrap">
+    <div class="slab__head reveal">
+      <span class="section-no">ii.</span>
+      <p class="eyebrow">The menu</p>
+      <span class="slab__rule"></span>
+    </div>
+
+    <div class="menu">
+      <div class="menu__section reveal">
+        <h2 class="menu__title">Soups <em>&amp; broths</em></h2>
+        <span class="menu__hint">Served with bread.</span>
+        <ul class="menu__list">
+          <li><span class="menu__item">Chicken Soup</span><span class="menu__price">£5.00</span></li>
+          <li><span class="menu__item">Lentil Soup</span><span class="menu__price">£4.50</span></li>
+        </ul>
+      </div>
+
+      <div class="menu__section reveal">
+        <h2 class="menu__title">Cold <em>mezze</em></h2>
+        <span class="menu__hint">Dips, pickles, vine leaves.</span>
+        <ul class="menu__list">
+          <li><span class="menu__item">Hummus</span><span class="menu__price">£6.00</span></li>
+          <li><span class="menu__item">Baba Ghanouj</span><span class="menu__price">£6.00</span></li>
+          <li><span class="menu__item">Moutabal</span><span class="menu__price">£6.00</span></li>
+          <li><span class="menu__item">Muhamara</span><span class="menu__price">£6.00</span></li>
+          <li><span class="menu__item">Stuffed Vine Leaves</span><span class="menu__price">£6.00</span></li>
+          <li><span class="menu__item">Mixed Mezze Platter</span><span class="menu__price">£14.00</span></li>
+        </ul>
+      </div>
+
+      <div class="menu__section reveal">
+        <h2 class="menu__title">Hot <em>mezze</em></h2>
+        <span class="menu__hint">From the charcoal &amp; the fryer.</span>
+        <ul class="menu__list">
+          <li><span class="menu__item">Falafel</span><span class="menu__price">£6.00</span></li>
+          <li><span class="menu__item">Kibeh — three pieces</span><span class="menu__price">£7.50</span></li>
+          <li><span class="menu__item">Halloumi</span><span class="menu__price">£7.50</span></li>
+          <li><span class="menu__item">Arayes Kofta</span><span class="menu__price">£7.50</span></li>
+          <li><span class="menu__item">Buffalo Chicken Wings</span><span class="menu__price">£7.50</span></li>
+          <li><span class="menu__item">Lamb Chops <em>(starter)</em></span><span class="menu__price">£8.00</span></li>
+        </ul>
+      </div>
+
+      <div class="menu__section reveal">
+        <h2 class="menu__title">From the <em>grill</em></h2>
+        <span class="menu__hint">Mains. With rice or chips, salad &amp; sauce.</span>
+        <ul class="menu__list">
+          <li><span class="menu__item">Grilled Chicken — half</span><span class="menu__price">£9.99</span></li>
+          <li><span class="menu__item">Lamb Shawarma</span><span class="menu__price">£12.99</span></li>
+          <li><span class="menu__item">Makloba</span><span class="menu__price">£13.00</span></li>
+          <li><span class="menu__item">Shish Taouk</span><span class="menu__price">£14.99</span></li>
+          <li><span class="menu__item">Lamb Chops</span><span class="menu__price">£16.99</span></li>
+          <li><span class="menu__item">Mixed Grill</span><span class="menu__price">£19.99</span></li>
+        </ul>
+      </div>
+
+      <div class="menu__section reveal">
+        <h2 class="menu__title">Salads</h2>
+        <span class="menu__hint">Sharp, herby, cold.</span>
+        <ul class="menu__list">
+          <li><span class="menu__item">Tabbouleh</span><span class="menu__price">£6.00</span></li>
+          <li><span class="menu__item">Fattoush</span><span class="menu__price">£6.00</span></li>
+          <li><span class="menu__item">Lebanese Salad</span><span class="menu__price">£6.00</span></li>
+          <li><span class="menu__item">Greek Salad</span><span class="menu__price">£7.00</span></li>
+          <li><span class="menu__item">Chicken Salad</span><span class="menu__price">£7.50</span></li>
+        </ul>
+      </div>
+
+      <div class="menu__section reveal">
+        <h2 class="menu__title">Wraps</h2>
+        <span class="menu__hint">Made on Lebanese flatbread.</span>
+        <ul class="menu__list">
+          <li><span class="menu__item">Falafel Wrap</span><span class="menu__price">£6.99</span></li>
+          <li><span class="menu__item">Halloumi Wrap</span><span class="menu__price">£6.99</span></li>
+          <li><span class="menu__item">Shawarma Chicken Wrap</span><span class="menu__price">£6.99</span></li>
+          <li><span class="menu__item">Kofta Wrap</span><span class="menu__price">£7.99</span></li>
+          <li><span class="menu__item">Shish Taouk Wrap</span><span class="menu__price">£7.99</span></li>
+          <li><span class="menu__item">Lamb Fillet Wrap</span><span class="menu__price">£8.99</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="eyebrow reveal" style="margin-top:2.6rem;max-width:60ch">Prices as listed on the kitchen's online ordering page. Subject to change at the door.</p>
   </div>
 </section>
 
-<section class="slab slab--olive">
-  <div class="slab__inner split">
-    <div class="reveal">
-      <p class="slab__eyebrow">Find us</p>
-      <h2 class="slab__title">29 Kirkgate. Five minutes from the <em>bus station</em>.</h2>
-      <p>We sit between Leeds Kirkgate Market and Quarry Hill on the south side of the city centre. The 11 bus drops you outside; the train station is a ten-minute walk if you cut through the arcades.</p>
-      <p style="font-family:var(--font-display); font-style:italic; font-size:1.4rem; margin-top:1.6rem;">
-        29 Kirkgate<br>
-        Leeds LS2 7DR
-      </p>
+<!-- ── hours + delivery letterhead ───────────── -->
+<section class="slab slab--ink" id="visit">
+  <div class="wrap">
+    <div class="slab__head reveal">
+      <span class="section-no" style="color:var(--clay)">iii.</span>
+      <p class="eyebrow">Visit &amp; delivery</p>
+      <span class="slab__rule"></span>
     </div>
-    <div class="reveal">
-      <p class="slab__eyebrow">Hours</p>
-      <ul class="hours">
-        <li><span>Monday — Thursday</span><span>11:00 – late</span></li>
-        <li><span>Friday — Saturday</span><span>11:00 – 01:40</span></li>
-        <li><span>Sunday</span><span>11:00 – 23:00</span></li>
-      </ul>
-      <p style="font-family:var(--font-body); font-style:italic; font-size:.85rem; margin-top:1rem; opacity:.75;">Delivery and collection times via the online ordering page — closing times can shift on bank holidays, ring ahead if it's late.</p>
+
+    <div class="letterhead">
+      <div class="lh__col reveal">
+        <h3>Delivery hours</h3>
+        <ul class="lh__list">
+          <li><span class="lh__day">Mon — Fri</span><span class="lh__time">15:30 — 01:00</span></li>
+          <li><span class="lh__day">Saturday</span><span class="lh__time">15:00 — 01:00</span></li>
+          <li><span class="lh__day">Sunday</span><span class="lh__time">15:00 — 23:50</span></li>
+        </ul>
+      </div>
+      <div class="lh__col reveal">
+        <h3>Collection hours</h3>
+        <ul class="lh__list">
+          <li><span class="lh__day">Mon · Tue · Thu · Fri</span><span class="lh__time">15:30 — 01:45</span></li>
+          <li><span class="lh__day">Wednesday</span><span class="lh__time">12:00 — 01:45</span></li>
+          <li><span class="lh__day">Saturday</span><span class="lh__time">15:30 — 01:45</span></li>
+          <li><span class="lh__day">Sunday</span><span class="lh__time">15:30 — 23:50</span></li>
+        </ul>
+      </div>
+      <div class="lh__col reveal">
+        <h3>Delivering to</h3>
+        <div class="lh__postcodes">
+          <span>LS1 — LS17</span>
+          <span>LS25 — LS28</span>
+          <span>BD4 · BD6</span>
+          <span>BD11 · BD12 · BD19</span>
+          <span>HD6</span>
+          <span>WF1 — WF10</span>
+          <span>WF12 · WF17</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="cta">
-  <h2 class="cta__title">Hungry, or just <em>passing through</em>?</h2>
-  <p style="font-family:var(--font-body); font-style:italic; opacity:.85; max-width:42ch; margin:0 auto 1.2rem;">Walk in, ring ahead, or order to your door. The kitchen runs until late.</p>
-  <a href="tel:+441133451414" class="cta__phone">0113 345 1414</a>
-  <p class="cta__sub">29 Kirkgate · Leeds LS2 7DR</p>
-</section>
-
-<footer class="foot">
-  <div class="foot__grid">
-    <div>
-      <p class="foot__brand">Albaba</p>
-      <p>Lebanese kitchen on Kirkgate.</p>
-      <p>29 Kirkgate, Leeds LS2 7DR</p>
-      <p><a href="tel:+441133451414">0113 345 1414</a></p>
+<!-- ── colophon ───────────────────────────────── -->
+<footer class="colophon">
+  <div class="wrap">
+    <div class="colophon__grid">
+      <div>
+        <p class="colo__mark">Al<em>baba</em>.</p>
+        <p class="colo__body" style="margin-top:.8rem">29 Kirkgate<br>Leeds LS2 7DR<br>West Yorkshire</p>
+      </div>
+      <div>
+        <h3 class="colo__head">Order &amp; menu</h3>
+        <p class="colo__body">
+          <a href="https://albaba-restaurant.co.uk/" target="_blank" rel="noopener">albaba-restaurant.co.uk</a><br>
+          Full menu, online ordering, delivery &amp; collection times.
+        </p>
+      </div>
+      <div>
+        <h3 class="colo__head">Find &amp; follow</h3>
+        <p class="colo__body">
+          <a href="https://maps.google.com/?q=Albaba+29+Kirkgate+Leeds+LS2+7DR" target="_blank" rel="noopener">Open in Google Maps</a><br>
+          <a href="https://www.facebook.com/p/Al-Baba-Lebanese-Restaurant-100077469334246/" target="_blank" rel="noopener">Facebook · Al-Baba Lebanese</a>
+        </p>
+      </div>
     </div>
-    <div>
-      <h4>Visit</h4>
-      <ul>
-        <li><a href="about.html">About the kitchen</a></li>
-        <li><a href="services.html">Menu</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact &amp; map</a></li>
-      </ul>
+    <div class="colo__credit">
+      <span>Set in Fraunces &amp; Newsreader. Built in Leeds.</span>
+      <span class="flag">№ a Binning.AI build draft</span>
     </div>
-    <div>
-      <h4>Open</h4>
-      <ul>
-        <li>Mon–Thu · 11:00 – late</li>
-        <li>Fri–Sat · 11:00 – 01:40</li>
-        <li>Sunday · 11:00 – 23:00</li>
-      </ul>
-    </div>
-  </div>
-  <div class="foot__bottom">
-    <span>© Albaba Restaurant · Leeds</span>
-    <span>Halal · Vegetarian · Vegan options</span>
   </div>
 </footer>
 
-<div class="status" role="status" aria-live="polite">
-  <span class="status__dot" aria-hidden="true"></span>
-  <span>Open · serving until late</span>
-</div>
+<script>
+  // Open/closed pill — based on Albaba's published hours.
+  // Delivery: Mon-Fri 15:30-01:00, Sat 15:00-01:00, Sun 15:00-23:50.
+  // Collection runs slightly later. We show the broader window.
+  (function(){
+    const now = new Date();
+    const day = now.getDay();        // 0 Sun … 6 Sat
+    const minutes = now.getHours()*60 + now.getMinutes();
+    // window in minutes from midnight; >1440 means "next day"
+    const windows = {
+      0: {open: 15*60,    close: 23*60+50},                  // Sun
+      1: {open: 15*60+30, close: 24*60+60+45},               // Mon  → 01:45 next day
+      2: {open: 15*60+30, close: 24*60+60+45},               // Tue
+      3: {open: 12*60,    close: 24*60+60+45},               // Wed (collection opens noon)
+      4: {open: 15*60+30, close: 24*60+60+45},               // Thu
+      5: {open: 15*60+30, close: 24*60+60+45},               // Fri
+      6: {open: 15*60,    close: 24*60+60+45},               // Sat
+    };
+    const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    const w = windows[day];
+    // also check we're still inside yesterday's late window (00:00–01:45)
+    const yest = windows[(day+6)%7];
+    const inLate = yest.close > 1440 && minutes < (yest.close - 1440);
+    const inToday = minutes >= w.open && minutes < Math.min(w.close, 1440);
+    const open = inLate || inToday;
+    const dot = document.getElementById('dot');
+    const status = document.getElementById('status');
+    const todayLine = document.getElementById('todayLine');
+    if(open){
+      status.textContent = 'Open — kitchen on';
+      dot.style.background = 'var(--olive)';
+    } else {
+      const openHr = Math.floor(w.open/60), openMin = w.open%60;
+      const pad = n => String(n).padStart(2,'0');
+      status.textContent = `Closed · opens ${pad(openHr)}:${pad(openMin)}`;
+      dot.style.background = 'var(--ember)';
+    }
+    if(todayLine){
+      todayLine.textContent = `${dayNames[day]} · Lebanese kitchen · Halal · Veggie`;
+    }
+  })();
+</script>
 
 </body>
 </html>
